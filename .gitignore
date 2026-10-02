@@ -22,6 +22,7 @@ wheels/
 
 # Virtual Environment
 venv/
+.venv/
 ENV/
 
 # IDE
@@ -32,7 +33,10 @@ ENV/
 
 # Environment variables
 .env
-.env.local
+.env.*
+!.env.example
+!.env.sample
+!.env.template
 
 # Logs
 *.log
@@ -62,12 +66,30 @@ rag/
 *.faiss
 
 # Cache
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
 .cache/
 .cache/modelscope/
 .cargo
 
-# Models
+# Downloaded models
+/models/bge/
 
 # LLM API keys
 *.key
 *.secret
+
+# Docker runtime data (Milvus, etcd, MinIO)
+/code/**/volumes/
+
+# Generated vector indexes
+faiss_index_store/
+llamaindex_index_store/
+vector_index/
+
+# Generated SQLite demo databases and sidecar files
+text2sql_demo.db
+text2sql_demo.db-*
+demo.db
+demo.db-*
